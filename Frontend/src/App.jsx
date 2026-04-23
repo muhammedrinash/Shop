@@ -12,7 +12,7 @@ import OrderStatus from './pages/OrderStatus';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AdminDashboard from './pages/AdminDashboard';
-import API from './services/api';
+import API from './services/api'; 
 
 // Wrapper to hide Navbar/Footer on auth pages
 const Layout = ({ cart, addToCart, removeFromCart, clearCart }) => {
