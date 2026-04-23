@@ -26,6 +26,15 @@ app.use("/api/orders", require("./routes/orderRoutes"));
 app.use("/api/carts", require("./routes/cartRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
 
+// ── Serve Frontend in Production ──────────────────────────────────────────
+const frontendDist = path.join(__dirname, "..", "Frontend", "dist");
+app.use(express.static(frontendDist));
+
+// SPA catch-all: any non-API route serves index.html
+app.use((req, res) => {
+  res.sendFile(path.join(frontendDist, "index.html"));
+});
+
 const PORT = process.env.PORT || 2500;
 
 app.listen(PORT, () => {
