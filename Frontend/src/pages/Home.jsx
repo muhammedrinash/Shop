@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import API from '../../services/api';
+import API from '../services/api';
 import ProductCard from '../Components/ProductCard';
 import { ChevronRight, Sparkles, Watch, Shirt, Home as HomeIcon, Smartphone, Truck, ShieldCheck, Headphones } from 'lucide-react';
 

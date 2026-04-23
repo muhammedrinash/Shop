@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { User, Lock, Mail, ArrowRight } from 'lucide-react';
-import API from '../../services/api';
+import API from '../services/api';
 
 const Register = () => {
   const [name, setName] = useState('');

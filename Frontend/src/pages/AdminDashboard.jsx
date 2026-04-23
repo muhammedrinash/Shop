@@ -5,7 +5,7 @@ import {
   DollarSign, Trash2, ChevronDown, Plus, X, Check,
   Clock, ArrowLeft, Edit, TrendingUp, AlertCircle
 } from 'lucide-react';
-import API from '../../services/api';
+import API from '../services/api';
 
 // ─── Stat Card ───────────────────────────────────────────────────────────────
 const StatCard = ({ icon: Icon, label, value, color, sub }) => (

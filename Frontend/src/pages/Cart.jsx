@@ -1,5 +1,5 @@
 import React from 'react';
-import API from '../../services/api';
+import API from '../services/api';
 import { Trash2, CreditCard, ChevronLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

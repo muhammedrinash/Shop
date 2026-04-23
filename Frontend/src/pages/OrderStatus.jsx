@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Package, Clock, CheckCircle, X, MapPin, Phone, User, Receipt } from 'lucide-react';
-import API from '../../services/api';
+import API from '../services/api';
 
 const OrderStatus = () => {
   const [orders, setOrders] = useState([]);
