@@ -26,13 +26,6 @@ app.use("/api/orders", require("./routes/orderRoutes"));
 app.use("/api/carts", require("./routes/cartRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
 
-// serve frontend
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
-// fallback
-app.use((req, res) => {
-  res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
-});
 
 const PORT = process.env.PORT || 2500;
 
