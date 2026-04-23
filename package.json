@@ -1,0 +1,9 @@
+{
+  "name": "fullstack-app",
+  "version": "1.0.0",
+  "main": "Backend/server.js",
+  "scripts": {
+    "build": "cd Frontend && npm install && npm run build",
+    "start": "node Backend/server.js"
+  }
+}

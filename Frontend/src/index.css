@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* Define your Premium Theme Variables for v4 */
+@theme {
+  --color-premium-black: #050505;
+  --color-premium-zinc: #0f0f11;
+  --color-premium-violet: #7c3aed;
+  
+  --radius-ios: 2.5rem;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  --animate-marquee: marquee 20s linear infinite;
+}
+
+/* Custom Base Styles */
+@layer base {
+  body {
+    background-color: #050505;
+    color: white;
+    margin: 0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Premium Violet Glow Utilities */
+@utility violet-glow {
+  box-shadow: 0 0 50px -12px rgba(124, 58, 237, 0.3);
+}
+
+@utility violet-gradient-text {
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to bottom right, var(--color-violet-400), var(--color-fuchsia-600));
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
