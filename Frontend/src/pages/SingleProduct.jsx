@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ShoppingBag, ChevronLeft } from 'lucide-react';
-import API from '../../services/api';
+import API from '../services/api';
 import ProductCard from '../Components/ProductCard';
 
 const SingleProduct = ({ addToCart }) => {
