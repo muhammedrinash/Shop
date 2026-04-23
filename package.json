@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "Backend/server.js",
   "scripts": {
-    "build": "npm install --prefix Backend && npm install --prefix Frontend && npm run build --prefix Frontend",
+    "build": "npm install --prefix Backend && npm install --include=dev --prefix Frontend && npm run build --prefix Frontend",
     "start": "node Backend/server.js"
   }
 }
