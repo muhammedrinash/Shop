@@ -101,3 +101,55 @@
 .animate-premium-fade {
   animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* ── Refined Premium Buttons ── */
+@utility btn-premium {
+  display: inline-flex;
+  items-center: ;
+  justify-center: ;
+  gap: 0.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition-all: ;
+  duration: 300ms;
+  cursor: pointer;
+}
+
+@utility btn-sm {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  font-size: 11px;
+  border-radius: 9999px;
+}
+
+@utility btn-md {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-size: 12px;
+  border-radius: 9999px;
+}
+
+@utility btn-primary {
+  background-color: #0f172a;
+  color: #ffffff;
+  &:hover {
+    background-color: #2563eb;
+    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
+  }
+}
+
+@utility btn-outline {
+  border-width: 1.5px;
+  border-color: #e2e8f0;
+  background-color: transparent;
+  color: #1e293b;
+  &:hover {
+    border-color: #0f172a;
+    background-color: #f8fafc;
+  }
+}

@@ -82,14 +82,14 @@ const Home = ({ addToCart }) => {
             <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-lg leading-relaxed font-medium">
               {heroSlides[currentSlide].subtitle}
             </p>
-            <div className="flex flex-wrap gap-5">
+            <div className="flex flex-wrap gap-4">
               <Link to="/store"
-                className="inline-flex items-center gap-3 bg-blue-600 text-white px-10 py-5 rounded-full font-black text-[14px] tracking-widest transition-all duration-300 hover:bg-white hover:text-slate-900 premium-shadow group"
+                className="btn-premium btn-md btn-primary group"
               >
-                {heroSlides[currentSlide].cta} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                {heroSlides[currentSlide].cta} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <button className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-5 rounded-full font-black text-[14px] tracking-widest hover:bg-white/20 transition-all">
-                <Play size={16} fill="white" /> WATCH FILM
+              <button className="btn-premium btn-md btn-outline text-white !border-white/20 !bg-white/10 backdrop-blur-md hover:!bg-white/20">
+                <Play size={14} fill="white" /> WATCH FILM
               </button>
             </div>
           </div>
@@ -208,9 +208,9 @@ const Home = ({ addToCart }) => {
               </div>
             </div>
             <Link to="/register"
-              className="inline-flex items-center gap-3 bg-white text-slate-900 px-10 py-5 rounded-full font-black text-[14px] tracking-widest transition-all duration-300 hover:bg-blue-600 hover:text-white"
+              className="btn-premium btn-md bg-white text-slate-900 hover:bg-blue-600 hover:text-white"
             >
-              JOIN THE CIRCLE <ArrowRight size={18} />
+              JOIN THE CIRCLE <ArrowRight size={16} />
             </Link>
           </div>
           <div className="flex-1 w-full lg:w-auto h-80 lg:h-[600px] relative">
@@ -236,7 +236,7 @@ const Home = ({ addToCart }) => {
               className="flex-1 bg-slate-50 border border-slate-100 rounded-full px-8 py-5 text-sm font-bold tracking-widest focus:outline-none focus:ring-4 focus:ring-blue-100 focus:bg-white transition-all text-center sm:text-left" 
             />
             <button type="submit"
-              className="bg-slate-900 text-white px-10 py-5 rounded-full text-[13px] font-black tracking-[0.2em] transition-all hover:bg-blue-600 hover:scale-105 active:scale-95"
+              className="btn-premium btn-sm btn-primary"
             >
               SUBSCRIBE
             </button>

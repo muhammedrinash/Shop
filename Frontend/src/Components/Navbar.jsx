@@ -113,7 +113,7 @@ const Navbar = ({ cartCount }) => {
               ) : (
                 <Link 
                   to="/login"
-                  className="hidden sm:flex items-center gap-2 text-[13px] font-bold py-2.5 px-6 rounded-full bg-slate-900 text-white hover:bg-blue-600 transition-all premium-shadow active:scale-95"
+                  className="btn-premium btn-sm btn-primary shadow-lg"
                 >
                   LOGIN
                 </Link>

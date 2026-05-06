@@ -73,8 +73,8 @@ const SingleProduct = ({ addToCart }) => {
         </div>
         <h2 className="text-3xl font-black text-slate-900 tracking-tighter mb-4">Product Not Found</h2>
         <p className="text-slate-500 mb-10 text-center max-w-sm">The item you are looking for might have been moved or is no longer available.</p>
-        <Link to="/store" className="bg-slate-900 text-white px-10 py-4 rounded-full font-black text-sm tracking-widest hover:bg-blue-600 transition-all flex items-center gap-2 group">
-          <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform" /> BACK TO STORE
+        <Link to="/store" className="btn-premium btn-sm btn-primary">
+          <ChevronLeft size={16} /> BACK TO STORE
         </Link>
       </div>
     );
@@ -174,11 +174,11 @@ const SingleProduct = ({ addToCart }) => {
               <button 
                 onClick={handleAddToCart} 
                 disabled={product.stock === 0}
-                className={`w-full py-6 rounded-full font-black text-[15px] tracking-[0.2em] flex items-center justify-center gap-4 transition-all duration-300 premium-shadow ${
-                  added ? 'bg-green-600 text-white' : product.stock === 0 ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-slate-900 text-white hover:bg-blue-600 active:scale-95'
+                className={`w-full btn-premium btn-md premium-shadow ${
+                  added ? 'bg-green-600 text-white' : product.stock === 0 ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'btn-primary active:scale-95'
                 }`}
               >
-                <ShoppingCart size={22} strokeWidth={2.5} />
+                <ShoppingCart size={18} strokeWidth={2.5} />
                 {added ? 'ADDED TO BAG' : product.stock === 0 ? 'OUT OF STOCK' : 'ADD TO SHOPPING BAG'}
               </button>
               

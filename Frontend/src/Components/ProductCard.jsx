@@ -64,10 +64,10 @@ const ProductCard = ({ product, addToCart }) => {
 
           <button
             onClick={() => addToCart(product)}
-            className="p-3.5 rounded-2xl bg-slate-900 text-white hover:bg-blue-600 transition-all duration-300 shadow-lg shadow-slate-200 hover:shadow-blue-200 active:scale-90"
+            className="p-3 rounded-2xl bg-slate-900 text-white hover:bg-blue-600 transition-all duration-300 shadow-lg shadow-slate-200 hover:shadow-blue-200 active:scale-90"
             title="Add to Cart"
           >
-            <ShoppingCart size={20} strokeWidth={2.5} />
+            <ShoppingCart size={18} strokeWidth={2.5} />
           </button>
         </div>
       </div>

@@ -51,7 +51,7 @@ const Cart = ({ cart, removeFromCart, clearCart }) => {
             <h2 className="text-xl font-bold text-slate-900 mb-2">Your cart is empty</h2>
             <p className="text-sm text-slate-500 mb-6">Looks like you haven't added anything yet.</p>
             <Link to="/store"
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-blue-700 transition-colors">
+              className="btn-premium btn-sm btn-primary">
               Continue Shopping
             </Link>
           </div>
@@ -114,7 +114,7 @@ const Cart = ({ cart, removeFromCart, clearCart }) => {
                 </div>
 
                 <button onClick={handleCheckout}
-                  className="w-full bg-blue-600 text-white font-semibold py-3.5 rounded-lg flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors text-sm shadow-sm">
+                  className="w-full btn-premium btn-md btn-primary shadow-sm">
                   <CreditCard size={17} />
                   Proceed to Checkout
                 </button>
