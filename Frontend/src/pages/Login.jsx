@@ -34,21 +34,22 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-16">
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-md">
 
         {/* Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-1 mb-6">
-            <span className="text-2xl font-extrabold tracking-tight text-[#1a1a1a]">VILUXE</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#e63946] mb-3 ml-0.5"></span>
+            <span className="text-2xl font-extrabold tracking-tight text-slate-900">VIL</span>
+            <span className="text-2xl font-extrabold tracking-tight text-blue-600">UXE</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mb-3 ml-0.5"></span>
           </Link>
-          <h1 className="text-2xl font-extrabold text-[#1a1a1a]">Sign in to your account</h1>
-          <p className="text-gray-500 text-sm mt-1">Welcome back! Please enter your details.</p>
+          <h1 className="text-2xl font-extrabold text-slate-900">Sign in to your account</h1>
+          <p className="text-slate-500 text-sm mt-1">Welcome back! Please enter your details.</p>
         </div>
 
         {/* Card */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+        <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 text-sm p-3 rounded-lg mb-5 flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0" />
@@ -59,16 +60,16 @@ const Login = () => {
           <form onSubmit={handleLogin} className="space-y-5">
             {/* Email */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email address</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Email address</label>
               <div className="relative">
-                <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="name@example.com"
                   required
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-gray-400 transition-colors bg-white"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-colors bg-white text-slate-900"
                 />
               </div>
             </div>
@@ -76,23 +77,23 @@ const Login = () => {
             {/* Password */}
             <div>
               <div className="flex justify-between items-center mb-1.5">
-                <label className="text-sm font-semibold text-gray-700">Password</label>
-                <button type="button" className="text-xs text-[#e63946] hover:underline font-medium">Forgot password?</button>
+                <label className="text-sm font-semibold text-slate-700">Password</label>
+                <button type="button" className="text-xs text-blue-600 hover:text-blue-700 font-medium">Forgot password?</button>
               </div>
               <div className="relative">
-                <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type={showPass ? 'text' : 'password'}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   required
-                  className="w-full pl-10 pr-10 py-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-gray-400 transition-colors bg-white"
+                  className="w-full pl-10 pr-10 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-colors bg-white text-slate-900"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPass(!showPass)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
                 >
                   {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
@@ -103,7 +104,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#1a1a1a] text-white font-semibold py-3 rounded-lg text-sm hover:bg-[#e63946] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg text-sm hover:bg-blue-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-sm"
             >
               {loading ? (
                 <>
@@ -117,15 +118,15 @@ const Login = () => {
             </button>
           </form>
 
-          <p className="text-center text-sm text-gray-500 mt-6">
+          <p className="text-center text-sm text-slate-500 mt-6">
             Don't have an account?{' '}
-            <Link to="/register" className="text-[#e63946] font-semibold hover:underline">
+            <Link to="/register" className="text-blue-600 font-semibold hover:text-blue-700">
               Create one
             </Link>
           </p>
         </div>
 
-        <p className="text-center text-xs text-gray-400 mt-6">
+        <p className="text-center text-xs text-slate-400 mt-6">
           &copy; {new Date().getFullYear()} VILUXE. All rights reserved.
         </p>
       </div>

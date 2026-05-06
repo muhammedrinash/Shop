@@ -9,14 +9,14 @@ import API from '../services/api';
 
 // ─── Stat Card ───────────────────────────────────────────────────────────────
 const StatCard = ({ icon: Icon, label, value, color, sub }) => (
-  <div className="bg-white border border-gray-200 rounded-xl p-5 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
+  <div className="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
     <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${color}`}>
       <Icon size={22} />
     </div>
     <div>
-      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-0.5">{label}</p>
-      <p className="text-2xl font-extrabold text-[#1a1a1a]">{value}</p>
-      {sub && <p className="text-xs text-gray-400 mt-0.5">{sub}</p>}
+      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">{label}</p>
+      <p className="text-2xl font-extrabold text-slate-900">{value}</p>
+      {sub && <p className="text-xs text-slate-400 mt-0.5">{sub}</p>}
     </div>
   </div>
 );
@@ -37,12 +37,12 @@ const StatusBadge = ({ status }) => {
 
 // ─── Modal Wrapper ────────────────────────────────────────────────────────────
 const Modal = ({ title, onClose, children }) => (
-  <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40">
-    <div className="bg-white border border-gray-200 rounded-2xl w-full max-w-lg shadow-2xl">
-      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-        <h3 className="text-base font-extrabold text-[#1a1a1a]">{title}</h3>
-        <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-          <X size={18} className="text-gray-500" />
+  <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
+    <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-lg shadow-2xl">
+      <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+        <h3 className="text-base font-extrabold text-slate-900">{title}</h3>
+        <button onClick={onClose} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
+          <X size={18} className="text-slate-500" />
         </button>
       </div>
       <div className="p-6">{children}</div>
@@ -53,9 +53,9 @@ const Modal = ({ title, onClose, children }) => (
 // ─── Input Field ──────────────────────────────────────────────────────────────
 const Field = ({ label, ...props }) => (
   <div>
-    <label className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5 block">{label}</label>
+    <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 block">{label}</label>
     <input
-      className="w-full border border-gray-200 rounded-lg py-2.5 px-3.5 text-sm text-[#1a1a1a] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-all bg-white"
+      className="w-full border border-slate-200 rounded-lg py-2.5 px-3.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all bg-white"
       {...props}
     />
   </div>
@@ -157,26 +157,27 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-10 h-10 border-2 border-[#e63946] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-          <p className="text-gray-500 text-sm">Loading dashboard...</p>
+          <div className="w-10 h-10 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+          <p className="text-slate-500 text-sm">Loading dashboard...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-slate-50 flex">
 
       {/* ── Sidebar ──────────────────────────────────────────────────────── */}
-      <aside className="w-56 shrink-0 bg-white border-r border-gray-200 flex flex-col fixed top-0 left-0 h-full z-40">
-        <div className="p-5 border-b border-gray-100">
+      <aside className="w-56 shrink-0 bg-white border-r border-slate-200 flex flex-col fixed top-0 left-0 h-full z-40">
+        <div className="p-5 border-b border-slate-100">
           <div className="flex items-center gap-1 mb-0.5">
-            <span className="text-lg font-extrabold tracking-tight text-[#1a1a1a]">VILUXE</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#e63946] mb-2.5 ml-0.5"></span>
+            <span className="text-lg font-extrabold tracking-tight text-slate-900">VIL</span>
+            <span className="text-lg font-extrabold tracking-tight text-blue-600">UXE</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mb-2.5 ml-0.5"></span>
           </div>
-          <p className="text-xs text-gray-400 font-semibold">Admin Panel</p>
+          <p className="text-xs text-slate-400 font-semibold">Admin Panel</p>
         </div>
 
         <nav className="flex-1 p-3 space-y-1">
@@ -186,8 +187,8 @@ const AdminDashboard = () => {
               onClick={() => setTab(id)}
               className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-all ${
                 tab === id
-                  ? 'bg-[#1a1a1a] text-white'
-                  : 'text-gray-600 hover:text-[#1a1a1a] hover:bg-gray-100'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <div className="flex items-center gap-2.5">
@@ -203,10 +204,10 @@ const AdminDashboard = () => {
           ))}
         </nav>
 
-        <div className="p-3 border-t border-gray-100">
+        <div className="p-3 border-t border-slate-100">
           <Link
             to="/"
-            className="flex items-center gap-2 text-xs font-semibold text-gray-500 hover:text-[#1a1a1a] transition-colors px-3 py-2.5"
+            className="flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-slate-900 transition-colors px-3 py-2.5"
           >
             <ArrowLeft size={14} /> Back to Store
           </Link>
@@ -230,8 +231,8 @@ const AdminDashboard = () => {
         {tab === 'overview' && (
           <div>
             <div className="mb-8">
-              <h1 className="text-2xl font-extrabold text-[#1a1a1a]">Dashboard Overview</h1>
-              <p className="text-gray-500 text-sm mt-1">Welcome back, Admin. Here's what's happening.</p>
+              <h1 className="text-2xl font-extrabold text-slate-900">Dashboard Overview</h1>
+              <p className="text-slate-500 text-sm mt-1">Welcome back, Admin. Here's what's happening.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
@@ -242,33 +243,33 @@ const AdminDashboard = () => {
             </div>
 
             {/* Recent Orders */}
-            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-              <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
-                <h2 className="font-bold text-[#1a1a1a] text-sm">Recent Orders</h2>
-                <button onClick={() => setTab('orders')} className="text-xs text-[#e63946] font-semibold hover:underline">View All</button>
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+              <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                <h2 className="font-bold text-slate-900 text-sm">Recent Orders</h2>
+                <button onClick={() => setTab('orders')} className="text-xs text-blue-600 font-semibold hover:underline">View All</button>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-gray-100 bg-gray-50">
+                    <tr className="border-b border-slate-100 bg-slate-50">
                       {['Order ID', 'Customer', 'Items', 'Total', 'Status'].map(h => (
-                        <th key={h} className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">{h}</th>
+                        <th key={h} className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {orders.slice(0, 5).map(order => (
-                      <tr key={order._id} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-3.5 font-mono text-xs text-gray-400">#{order._id.slice(-8).toUpperCase()}</td>
-                        <td className="px-6 py-3.5 font-semibold text-sm text-[#1a1a1a]">{order.customerName}</td>
-                        <td className="px-6 py-3.5 text-gray-500 text-sm">{order.items.length}</td>
-                        <td className="px-6 py-3.5 font-bold text-sm text-[#e63946]">${order.totalPrice.toLocaleString()}</td>
+                      <tr key={order._id} className="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                        <td className="px-6 py-3.5 font-mono text-xs text-slate-400">#{order._id.slice(-8).toUpperCase()}</td>
+                        <td className="px-6 py-3.5 font-semibold text-sm text-slate-900">{order.customerName}</td>
+                        <td className="px-6 py-3.5 text-slate-500 text-sm">{order.items.length}</td>
+                        <td className="px-6 py-3.5 font-bold text-sm text-blue-600">${order.totalPrice.toLocaleString()}</td>
                         <td className="px-6 py-3.5"><StatusBadge status={order.status} /></td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
-                {orders.length === 0 && <div className="py-12 text-center text-gray-400 text-sm">No orders yet.</div>}
+                {orders.length === 0 && <div className="py-12 text-center text-slate-400 text-sm">No orders yet.</div>}
               </div>
             </div>
           </div>
@@ -278,44 +279,44 @@ const AdminDashboard = () => {
         {tab === 'orders' && (
           <div>
             <div className="mb-8">
-              <h1 className="text-2xl font-extrabold text-[#1a1a1a]">All Orders</h1>
-              <p className="text-gray-500 text-sm mt-1">{orders.length} total orders</p>
+              <h1 className="text-2xl font-extrabold text-slate-900">All Orders</h1>
+              <p className="text-slate-500 text-sm mt-1">{orders.length} total orders</p>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-gray-100 bg-gray-50">
+                    <tr className="border-b border-slate-100 bg-slate-50">
                       {['ID', 'Customer', 'Items', 'Total', 'Status', 'Date', 'Actions'].map(h => (
-                        <th key={h} className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3">{h}</th>
+                        <th key={h} className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-5 py-3">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {orders.map(order => (
-                      <tr key={order._id} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                        <td className="px-5 py-3.5 font-mono text-xs text-gray-400">#{order._id.slice(-6).toUpperCase()}</td>
+                      <tr key={order._id} className="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                        <td className="px-5 py-3.5 font-mono text-xs text-slate-400">#{order._id.slice(-6).toUpperCase()}</td>
                         <td className="px-5 py-3.5">
-                          <p className="font-semibold text-sm text-[#1a1a1a]">{order.customerName}</p>
-                          <p className="text-gray-400 text-xs">{order.userId?.email || '—'}</p>
+                          <p className="font-semibold text-sm text-slate-900">{order.customerName}</p>
+                          <p className="text-slate-400 text-xs">{order.userId?.email || '—'}</p>
                         </td>
-                        <td className="px-5 py-3.5 text-gray-500 text-sm">{order.items.length}</td>
-                        <td className="px-5 py-3.5 font-bold text-sm text-[#e63946]">${order.totalPrice.toLocaleString()}</td>
+                        <td className="px-5 py-3.5 text-slate-500 text-sm">{order.items.length}</td>
+                        <td className="px-5 py-3.5 font-bold text-sm text-blue-600">${order.totalPrice.toLocaleString()}</td>
                         <td className="px-5 py-3.5">
                           <select
                             value={order.status}
                             onChange={e => updateStatus(order._id, e.target.value)}
-                            className="border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-[#1a1a1a] focus:outline-none focus:border-gray-400 bg-white cursor-pointer"
+                            className="border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:border-blue-400 bg-white cursor-pointer"
                           >
                             <option value="pending">Pending</option>
                             <option value="completed">Completed</option>
                             <option value="cancelled">Cancelled</option>
                           </select>
                         </td>
-                        <td className="px-5 py-3.5 text-xs text-gray-500">{new Date(order.createdAt).toLocaleDateString()}</td>
+                        <td className="px-5 py-3.5 text-xs text-slate-500">{new Date(order.createdAt).toLocaleDateString()}</td>
                         <td className="px-5 py-3.5">
-                          <button onClick={() => deleteOrder(order._id)} className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all">
+                          <button onClick={() => deleteOrder(order._id)} className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all">
                             <Trash2 size={15} />
                           </button>
                         </td>
@@ -323,7 +324,7 @@ const AdminDashboard = () => {
                     ))}
                   </tbody>
                 </table>
-                {orders.length === 0 && <div className="py-12 text-center text-gray-400 text-sm">No orders yet.</div>}
+                {orders.length === 0 && <div className="py-12 text-center text-slate-400 text-sm">No orders yet.</div>}
               </div>
             </div>
           </div>
@@ -334,12 +335,12 @@ const AdminDashboard = () => {
           <div>
             <div className="mb-8 flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-extrabold text-[#1a1a1a]">Manage Products</h1>
-                <p className="text-gray-500 text-sm mt-1">{products.length} products in catalog</p>
+                <h1 className="text-2xl font-extrabold text-slate-900">Manage Products</h1>
+                <p className="text-slate-500 text-sm mt-1">{products.length} products in catalog</p>
               </div>
               <button
                 onClick={() => openProductModal()}
-                className="flex items-center gap-2 bg-[#1a1a1a] text-white font-semibold px-4 py-2.5 rounded-lg hover:bg-[#e63946] transition-colors text-sm"
+                className="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2.5 rounded-lg hover:bg-blue-700 transition-colors text-sm shadow-sm"
               >
                 <Plus size={16} /> Add Product
               </button>
@@ -347,24 +348,24 @@ const AdminDashboard = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
               {products.map(product => (
-                <div key={product._id} className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
-                  <div className="w-full h-36 bg-gray-50 flex items-center justify-center overflow-hidden">
+                <div key={product._id} className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+                  <div className="w-full h-36 bg-slate-50 flex items-center justify-center overflow-hidden border-b border-slate-100">
                     {product.image
-                      ? <img src={product.image} alt={product.name} className="max-h-full max-w-full object-contain p-3" />
-                      : <Package size={36} className="text-gray-300" />
+                      ? <img src={product.image} alt={product.name} className="max-h-full max-w-full object-contain p-3 group-hover:scale-105 transition-transform" />
+                      : <Package size={36} className="text-slate-300" />
                     }
                   </div>
                   <div className="p-4">
                     <div className="flex items-start justify-between gap-2 mb-1">
                       <div>
-                        <h3 className="font-bold text-sm text-[#1a1a1a] line-clamp-1">{product.name}</h3>
-                        <p className="text-gray-400 text-xs capitalize">{product.category}</p>
+                        <h3 className="font-bold text-sm text-slate-900 line-clamp-1">{product.name}</h3>
+                        <p className="text-slate-400 text-xs capitalize">{product.category}</p>
                       </div>
-                      <p className="font-extrabold text-sm text-[#e63946] shrink-0">${product.price?.toLocaleString()}</p>
+                      <p className="font-extrabold text-sm text-blue-600 shrink-0">${product.price?.toLocaleString()}</p>
                     </div>
-                    <p className="text-xs text-gray-500 mb-3">Stock: {product.stock}</p>
+                    <p className="text-xs text-slate-500 mb-3">Stock: {product.stock}</p>
                     <div className="flex gap-2">
-                      <button onClick={() => openProductModal(product)} className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-xs font-semibold text-gray-700 transition-all">
+                      <button onClick={() => openProductModal(product)} className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-xs font-semibold text-slate-700 transition-all">
                         <Edit size={13} /> Edit
                       </button>
                       <button onClick={() => deleteProduct(product._id)} className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-red-50 hover:bg-red-100 rounded-lg text-xs font-semibold text-red-600 transition-all">
@@ -382,35 +383,35 @@ const AdminDashboard = () => {
         {tab === 'users' && (
           <div>
             <div className="mb-8">
-              <h1 className="text-2xl font-extrabold text-[#1a1a1a]">All Users</h1>
-              <p className="text-gray-500 text-sm mt-1">{users.length} registered users</p>
+              <h1 className="text-2xl font-extrabold text-slate-900">All Users</h1>
+              <p className="text-slate-500 text-sm mt-1">{users.length} registered users</p>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-gray-100 bg-gray-50">
+                    <tr className="border-b border-slate-100 bg-slate-50">
                       {['Name', 'Email', 'Role', 'Joined', 'Actions'].map(h => (
-                        <th key={h} className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">{h}</th>
+                        <th key={h} className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {users.map(user => (
-                      <tr key={user._id} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-3.5 font-semibold text-sm text-[#1a1a1a]">{user.name}</td>
-                        <td className="px-6 py-3.5 text-gray-500 text-sm">{user.email}</td>
+                      <tr key={user._id} className="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                        <td className="px-6 py-3.5 font-semibold text-sm text-slate-900">{user.name}</td>
+                        <td className="px-6 py-3.5 text-slate-500 text-sm">{user.email}</td>
                         <td className="px-6 py-3.5">
                           {user.isAdmin
                             ? <span className="text-[11px] font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full border border-blue-200">Admin</span>
-                            : <span className="text-[11px] font-bold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full border border-gray-200">User</span>
+                            : <span className="text-[11px] font-bold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full border border-slate-200">User</span>
                           }
                         </td>
-                        <td className="px-6 py-3.5 text-xs text-gray-500">{new Date(user.createdAt).toLocaleDateString()}</td>
+                        <td className="px-6 py-3.5 text-xs text-slate-500">{new Date(user.createdAt).toLocaleDateString()}</td>
                         <td className="px-6 py-3.5">
                           {!user.isAdmin && (
-                            <button onClick={() => deleteUser(user._id)} className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all">
+                            <button onClick={() => deleteUser(user._id)} className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all">
                               <Trash2 size={15} />
                             </button>
                           )}
@@ -437,20 +438,20 @@ const AdminDashboard = () => {
             <Field label="Category" value={productForm.category} onChange={e => setProductForm({ ...productForm, category: e.target.value })} placeholder="e.g. electronics" />
             <Field label="Image URL" value={productForm.image} onChange={e => setProductForm({ ...productForm, image: e.target.value })} placeholder="https://..." />
             <div>
-              <label className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5 block">Description</label>
+              <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5 block">Description</label>
               <textarea
                 value={productForm.description}
                 onChange={e => setProductForm({ ...productForm, description: e.target.value })}
                 rows={3}
-                className="w-full border border-gray-200 rounded-lg py-2.5 px-3.5 text-sm text-[#1a1a1a] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-all resize-none"
+                className="w-full border border-slate-200 rounded-lg py-2.5 px-3.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all resize-none bg-white"
                 placeholder="Product description..."
               />
             </div>
             <div className="flex gap-3 pt-1">
-              <button onClick={() => setProductModal(false)} className="flex-1 py-2.5 rounded-lg border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-all">
+              <button onClick={() => setProductModal(false)} className="flex-1 py-2.5 rounded-lg border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-all">
                 Cancel
               </button>
-              <button onClick={saveProduct} className="flex-1 py-2.5 rounded-lg bg-[#1a1a1a] text-white text-sm font-semibold hover:bg-[#e63946] transition-all">
+              <button onClick={saveProduct} className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-all shadow-sm">
                 {editingProduct ? 'Save Changes' : 'Create Product'}
               </button>
             </div>

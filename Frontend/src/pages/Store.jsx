@@ -39,12 +39,12 @@ const Store = ({ addToCart }) => {
   return (
     <div className="min-h-screen bg-white">
       {/* Page Header */}
-      <div className="bg-gray-50 border-b border-gray-200">
+      <div className="bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6 py-8">
-          <h1 className="text-3xl font-extrabold text-[#1a1a1a]">All Products</h1>
-          <p className="text-gray-500 text-sm mt-1">
+          <h1 className="text-3xl font-extrabold text-slate-900">All Products</h1>
+          <p className="text-slate-500 text-sm mt-1">
             {sortedProducts.length} product{sortedProducts.length !== 1 ? 's' : ''} found
-            {(localSearch || query) && <span> for "<strong>{localSearch || query}</strong>"</span>}
+            {(localSearch || query) && <span> for "<strong className="text-blue-600">{localSearch || query}</strong>"</span>}
           </p>
         </div>
       </div>
@@ -52,31 +52,28 @@ const Store = ({ addToCart }) => {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Search + Sort bar */}
         <div className="flex flex-col sm:flex-row gap-3 mb-8">
-          {/* Search */}
           <div className="relative flex-1 max-w-sm">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
               value={localSearch}
               onChange={e => setLocalSearch(e.target.value)}
               placeholder="Search products..."
-              className="w-full pl-9 pr-10 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-gray-400 transition-colors bg-white"
+              className="w-full pl-9 pr-10 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-colors bg-white text-slate-700"
             />
             {localSearch && (
-              <button onClick={() => setLocalSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <button onClick={() => setLocalSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
                 <X size={14} />
               </button>
             )}
           </div>
 
-          {/* Sort */}
           <div className="flex items-center gap-2">
-            <SlidersHorizontal size={16} className="text-gray-500" />
+            <SlidersHorizontal size={16} className="text-slate-400" />
             <select
               value={sortBy}
               onChange={e => setSortBy(e.target.value)}
-              className="border border-gray-200 rounded-lg text-sm px-3 py-2.5 focus:outline-none focus:border-gray-400 bg-white text-gray-700"
-            >
+              className="border border-slate-200 rounded-lg text-sm px-3 py-2.5 focus:outline-none focus:border-blue-400 bg-white text-slate-700">
               <option value="default">Sort: Featured</option>
               <option value="price-low">Price: Low to High</option>
               <option value="price-high">Price: High to Low</option>
@@ -85,11 +82,10 @@ const Store = ({ addToCart }) => {
           </div>
         </div>
 
-        {/* Products grid */}
         {loading ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="bg-gray-100 rounded-xl aspect-square animate-pulse" />
+              <div key={i} className="bg-slate-100 rounded-xl aspect-square animate-pulse" />
             ))}
           </div>
         ) : sortedProducts.length > 0 ? (
@@ -100,17 +96,16 @@ const Store = ({ addToCart }) => {
           </div>
         ) : (
           <div className="text-center py-24">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Search size={24} className="text-gray-400" />
+            <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Search size={24} className="text-blue-300" />
             </div>
-            <h2 className="text-xl font-bold text-[#1a1a1a] mb-2">No products found</h2>
-            <p className="text-gray-500 text-sm mb-6">
+            <h2 className="text-xl font-bold text-slate-900 mb-2">No products found</h2>
+            <p className="text-slate-500 text-sm mb-6">
               We couldn't find anything matching "{localSearch || query}". Try a different search.
             </p>
-            <button
-              onClick={() => setLocalSearch('')}
-              className="bg-[#1a1a1a] text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#e63946] transition-colors"
-            >
+            <button onClick={() => setLocalSearch('')}
+              className="text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors"
+              style={{ backgroundColor: '#2563eb' }}>
               Clear Search
             </button>
           </div>
