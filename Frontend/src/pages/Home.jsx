@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import API from '../services/api';
 import ProductCard from '../Components/ProductCard';
-import { ChevronRight, Truck, ShieldCheck, RotateCcw, Headphones } from 'lucide-react';
+import { ChevronRight, ArrowRight, Play, Sparkles, ShieldCheck, Zap, Globe } from 'lucide-react';
 
 const Home = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
@@ -13,161 +13,232 @@ const Home = ({ addToCart }) => {
   }, []);
 
   const heroSlides = [
-    { tag: "New Arrivals", title: "Fresh Styles for Every Season", subtitle: "Discover curated collections handpicked just for you", cta: "Shop Now", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1470&auto=format&fit=crop" },
-    { tag: "Electronics", title: "Next-Gen Tech at Your Fingertips", subtitle: "The latest gadgets and devices, all in one place", cta: "Explore Tech", image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?q=80&w=1470&auto=format&fit=crop" },
-    { tag: "Accessories", title: "Complete Your Look", subtitle: "Premium accessories that elevate any outfit", cta: "Shop Accessories", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1470&auto=format&fit=crop" },
+    { 
+      tag: "Spring '24 Collection", 
+      title: "Elevate Your Lifestyle", 
+      subtitle: "Experience the perfect blend of innovation and elegance with our curated premium selection.", 
+      cta: "EXPLORE NOW", 
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1470&auto=format&fit=crop" 
+    },
+    { 
+      tag: "Tech Excellence", 
+      title: "Precision Reimagined", 
+      subtitle: "Uncompromising performance meets minimalist design in our latest electronic series.", 
+      cta: "VIEW TECH", 
+      image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?q=80&w=1470&auto=format&fit=crop" 
+    },
+    { 
+      tag: "Masterfully Crafted", 
+      title: "Detail In Every Piece", 
+      subtitle: "Accessories designed to stand the test of time, made with the finest materials known to man.", 
+      cta: "SHOP LUXE", 
+      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1470&auto=format&fit=crop" 
+    },
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => setCurrentSlide(prev => (prev + 1) % heroSlides.length), 5000);
+    const timer = setInterval(() => setCurrentSlide(prev => (prev + 1) % heroSlides.length), 6000);
     return () => clearInterval(timer);
   }, []);
 
   const categories = [
-    { name: 'Fashion', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600', link: '/store?search=shirt,pant,fashion' },
-    { name: 'Electronics', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?q=80&w=600', link: '/store?search=phone,laptop,electronic,tech' },
-    { name: 'Accessories', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600', link: '/store?search=accessory,watch,ring' },
+    { name: 'FASHION', count: '124 Products', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600', link: '/store?search=shirt,pant,fashion' },
+    { name: 'ELECTRONICS', count: '86 Products', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?q=80&w=600', link: '/store?search=phone,laptop,electronic,tech' },
+    { name: 'ACCESSORIES', count: '52 Products', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600', link: '/store?search=accessory,watch,ring' },
   ];
 
   const features = [
-    { icon: <Truck size={24} />, title: 'Free Shipping', desc: 'On orders over $50' },
-    { icon: <RotateCcw size={24} />, title: 'Easy Returns', desc: '30-day return policy' },
-    { icon: <ShieldCheck size={24} />, title: 'Secure Payment', desc: '100% safe checkout' },
-    { icon: <Headphones size={24} />, title: '24/7 Support', desc: 'Always here to help' },
+    { icon: <Globe size={20} />, title: 'GLOBAL DELIVERY', desc: 'Ships to 120+ countries' },
+    { icon: <Zap size={20} />, title: 'EXPRESS SERVICE', desc: 'Next day delivery available' },
+    { icon: <ShieldCheck size={20} />, title: 'SECURE PAYMENTS', desc: 'AES-256 encrypted' },
+    { icon: <Sparkles size={20} />, title: 'PREMIUM QUALITY', desc: 'Hand-inspected items' },
   ];
 
   return (
     <div className="min-h-screen bg-white">
 
-      {/* Hero Slider */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: '#eff6ff' }}>
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20 flex flex-col md:flex-row items-center gap-10 min-h-[420px]">
-          <div className="flex-1 z-10">
-            <span className="inline-block text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4"
-              style={{ backgroundColor: '#2563eb' }}>
-              {heroSlides[currentSlide].tag}
-            </span>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-4">
+      {/* Cinematic Hero Slider */}
+      <section className="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden bg-slate-900">
+        {/* Background Image with Ken Burns Effect */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroSlides[currentSlide].image} 
+            alt="hero" 
+            className="w-full h-full object-cover opacity-60 scale-110 transition-all duration-[6000ms] ease-out"
+            key={currentSlide}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/60 to-transparent"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
+          <div className="max-w-2xl animate-premium-fade" key={`text-${currentSlide}`}>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-10 h-[1px] bg-blue-500"></span>
+              <span className="text-blue-400 text-[12px] font-black uppercase tracking-[0.4em]">{heroSlides[currentSlide].tag}</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] mb-8 tracking-tighter">
               {heroSlides[currentSlide].title}
             </h1>
-            <p className="text-slate-500 text-lg mb-8 max-w-md">
+            <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-lg leading-relaxed font-medium">
               {heroSlides[currentSlide].subtitle}
             </p>
-            <Link to="/store"
-              className="inline-flex items-center gap-2 text-white px-7 py-3.5 rounded-lg font-semibold text-sm transition-colors duration-200"
-              style={{ backgroundColor: '#2563eb' }}
-              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#1d4ed8'}
-              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#2563eb'}>
-              {heroSlides[currentSlide].cta} <ChevronRight size={16} />
-            </Link>
-          </div>
-          <div className="flex-1 flex justify-center">
-            <img src={heroSlides[currentSlide].image} alt="hero"
-              className="w-full max-w-sm md:max-w-md rounded-2xl object-cover shadow-xl"
-              style={{ maxHeight: '340px', transition: 'opacity 0.5s ease' }} />
+            <div className="flex flex-wrap gap-5">
+              <Link to="/store"
+                className="inline-flex items-center gap-3 bg-blue-600 text-white px-10 py-5 rounded-full font-black text-[14px] tracking-widest transition-all duration-300 hover:bg-white hover:text-slate-900 premium-shadow group"
+              >
+                {heroSlides[currentSlide].cta} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <button className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-5 rounded-full font-black text-[14px] tracking-widest hover:bg-white/20 transition-all">
+                <Play size={16} fill="white" /> WATCH FILM
+              </button>
+            </div>
           </div>
         </div>
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
+
+        {/* Slide Progress Dots */}
+        <div className="absolute bottom-12 right-12 flex items-center gap-6 z-20">
           {heroSlides.map((_, i) => (
-            <button key={i} onClick={() => setCurrentSlide(i)}
-              className="h-2 rounded-full transition-all duration-300"
-              style={{ width: i === currentSlide ? '24px' : '8px', backgroundColor: i === currentSlide ? '#2563eb' : '#bfdbfe' }} />
+            <button 
+              key={i} 
+              onClick={() => setCurrentSlide(i)}
+              className="group flex flex-col items-end gap-2"
+            >
+              <span className={`text-[11px] font-black tracking-tighter transition-all ${i === currentSlide ? 'text-white' : 'text-slate-500'}`}>0{i+1}</span>
+              <div 
+                className={`h-[3px] rounded-full transition-all duration-700 ${i === currentSlide ? 'w-16 bg-blue-500' : 'w-8 bg-slate-700 group-hover:bg-slate-500'}`} 
+              />
+            </button>
           ))}
         </div>
       </section>
 
-      {/* Features bar */}
-      <section className="border-y border-slate-100 bg-white">
-        <div className="max-w-7xl mx-auto px-6 py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+      {/* Feature Highlight Bar */}
+      <section className="border-b border-slate-100 bg-white relative z-10 -mt-10 mx-6 lg:mx-12 rounded-3xl premium-shadow">
+        <div className="max-w-7xl mx-auto px-10 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {features.map((f, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="text-blue-600">{f.icon}</div>
+            <div key={i} className="flex items-start gap-5 group">
+              <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-900 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                {f.icon}
+              </div>
               <div>
-                <p className="text-sm font-bold text-slate-800">{f.title}</p>
-                <p className="text-xs text-slate-500">{f.desc}</p>
+                <p className="text-[12px] font-black text-slate-900 tracking-wider mb-1">{f.title}</p>
+                <p className="text-xs text-slate-500 font-medium leading-relaxed">{f.desc}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Shop by Category */}
-      <section className="max-w-7xl mx-auto px-6 py-14">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-slate-900">Shop by Category</h2>
-          <Link to="/store" className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1">
-            All Categories <ChevronRight size={14} />
+      {/* Shop by Category Section */}
+      <section className="max-w-7xl mx-auto px-6 lg:px-12 py-32">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="max-w-lg">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter mb-4">Curated Selections</h2>
+            <p className="text-slate-500 font-medium">Browse through our hand-picked categories designed for those who seek the extraordinary in every day.</p>
+          </div>
+          <Link to="/store" className="text-sm font-black text-blue-600 hover:text-slate-900 flex items-center gap-2 group tracking-widest uppercase">
+            EXPLORE COLLECTIONS <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {categories.map((cat, i) => (
-            <Link key={i} to={cat.link} className="group relative rounded-xl overflow-hidden aspect-square bg-slate-100 block">
+            <Link key={i} to={cat.link} className="group relative rounded-[40px] overflow-hidden aspect-[4/5] bg-slate-100 block">
               <img src={cat.image} alt={cat.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 flex items-end p-4"
-                style={{ background: 'linear-gradient(to top, rgba(30,41,59,0.75) 0%, transparent 60%)' }}>
-                <span className="text-white font-bold text-base">{cat.name}</span>
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1000ms] ease-out" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+              <div className="absolute inset-0 flex flex-col justify-end p-10">
+                <span className="text-blue-400 text-[11px] font-black tracking-[0.3em] mb-2">{cat.count}</span>
+                <h3 className="text-3xl font-black text-white tracking-tighter group-hover:-translate-y-2 transition-transform">{cat.name}</h3>
+                <div className="w-0 h-[3px] bg-white group-hover:w-16 transition-all duration-500"></div>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Trending Products */}
-      <section className="max-w-7xl mx-auto px-6 pb-14">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h2 className="text-2xl font-bold text-slate-900">Trending Now</h2>
-            <p className="text-sm text-slate-500 mt-1">Our most popular products this week</p>
+      {/* Trending Products Grid */}
+      <section className="bg-slate-50 py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+            <div>
+              <div className="flex items-center gap-2 text-blue-600 font-black text-[11px] tracking-[0.3em] mb-4 uppercase">
+                <Sparkles size={14} /> NEW ARRIVALS
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">Trending Now</h2>
+            </div>
+            <Link to="/store" className="text-sm font-black text-blue-600 hover:text-slate-900 flex items-center gap-2 group tracking-widest uppercase">
+              VIEW ALL CATALOG <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
-          <Link to="/store" className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1">
-            View All <ChevronRight size={14} />
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {products.slice(0, 8).map(p => (
-            <ProductCard key={p._id} product={p} addToCart={addToCart} />
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {products.slice(0, 8).map(p => (
+              <ProductCard key={p._id} product={p} addToCart={addToCart} />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Promo Banner */}
-      <section className="max-w-7xl mx-auto px-6 pb-14">
-        <div className="rounded-2xl overflow-hidden flex flex-col md:flex-row items-center"
-          style={{ background: 'linear-gradient(135deg, #1e40af 0%, #2563eb 60%, #3b82f6 100%)' }}>
-          <div className="flex-1 p-10 md:p-14">
-            <span className="text-blue-200 text-xs font-bold uppercase tracking-widest">Limited Offer</span>
-            <h3 className="text-3xl md:text-4xl font-extrabold text-white mt-2 mb-4 leading-tight">
-              Get 20% Off<br />Your First Order
-            </h3>
-            <p className="text-blue-100 text-sm mb-6 max-w-sm">
-              Sign up today and receive an exclusive discount on your first purchase. No strings attached.
-            </p>
+      {/* Premium Experience Section (Extra) */}
+      <section className="max-w-7xl mx-auto px-6 lg:px-12 py-32">
+        <div className="bg-slate-900 rounded-[50px] overflow-hidden flex flex-col lg:flex-row items-center relative">
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 skew-x-12 translate-x-32"></div>
+          <div className="flex-1 p-12 md:p-20 relative z-10">
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-8">
+              Experience the<br />
+              <span className="text-blue-500">Viluxe Difference</span>
+            </h2>
+            <div className="space-y-8 mb-12">
+              <div className="flex gap-6">
+                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-500 shrink-0">
+                  <ShieldCheck size={24} />
+                </div>
+                <div>
+                  <h4 className="text-white font-black text-[14px] tracking-wider mb-2">LIFETIME ASSURANCE</h4>
+                  <p className="text-slate-400 text-sm leading-relaxed font-medium">Every product in our catalog comes with a guarantee of authenticity and a 2-year warranty.</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-500 shrink-0">
+                  <Globe size={24} />
+                </div>
+                <div>
+                  <h4 className="text-white font-black text-[14px] tracking-wider mb-2">CULTURAL CURATION</h4>
+                  <p className="text-slate-400 text-sm leading-relaxed font-medium">We source from independent creators and top-tier manufacturers globally to bring you unique finds.</p>
+                </div>
+              </div>
+            </div>
             <Link to="/register"
-              className="inline-flex items-center gap-2 bg-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors hover:bg-blue-50"
-              style={{ color: '#1d4ed8' }}>
-              Claim Offer <ChevronRight size={15} />
+              className="inline-flex items-center gap-3 bg-white text-slate-900 px-10 py-5 rounded-full font-black text-[14px] tracking-widest transition-all duration-300 hover:bg-blue-600 hover:text-white"
+            >
+              JOIN THE CIRCLE <ArrowRight size={18} />
             </Link>
           </div>
-          <div className="hidden md:block flex-1">
-            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=700&auto=format&fit=crop"
-              alt="Promo" className="w-full h-64 md:h-80 object-cover opacity-80" />
+          <div className="flex-1 w-full lg:w-auto h-80 lg:h-[600px] relative">
+            <img 
+              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=700&auto=format&fit=crop" 
+              alt="Experience" 
+              className="w-full h-full object-cover lg:rounded-l-[50px]" 
+            />
           </div>
         </div>
       </section>
 
       {/* Newsletter */}
-      <section className="bg-slate-50 border-t border-slate-100 py-14">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <h3 className="text-2xl font-bold text-slate-900 mb-2">Stay in the Loop</h3>
-          <p className="text-slate-500 text-sm mb-6">Get the latest deals, new arrivals, and style inspiration — right to your inbox.</p>
-          <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input type="email" placeholder="Enter your email address"
-              className="flex-1 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-colors bg-white" />
+      <section className="bg-white py-32 border-t border-slate-50">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <div className="text-blue-600 font-black text-[11px] tracking-[0.4em] mb-6 uppercase">NEWSLETTER</div>
+          <h3 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter mb-8">Stay Ahead of the Curve</h3>
+          <p className="text-slate-500 font-medium mb-12 text-lg">Receive early access to collections, exclusive events, and the latest in lifestyle innovation.</p>
+          <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+            <input 
+              type="email" 
+              placeholder="YOUR EMAIL ADDRESS" 
+              className="flex-1 bg-slate-50 border border-slate-100 rounded-full px-8 py-5 text-sm font-bold tracking-widest focus:outline-none focus:ring-4 focus:ring-blue-100 focus:bg-white transition-all text-center sm:text-left" 
+            />
             <button type="submit"
-              className="text-white px-6 py-3 rounded-lg text-sm font-bold transition-colors whitespace-nowrap"
-              style={{ backgroundColor: '#2563eb' }}>
-              Subscribe
+              className="bg-slate-900 text-white px-10 py-5 rounded-full text-[13px] font-black tracking-[0.2em] transition-all hover:bg-blue-600 hover:scale-105 active:scale-95"
+            >
+              SUBSCRIBE
             </button>
           </form>
         </div>
