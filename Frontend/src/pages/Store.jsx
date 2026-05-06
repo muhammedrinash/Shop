@@ -13,6 +13,10 @@ const Store = ({ addToCart }) => {
   const [sortBy, setSortBy] = useState('default');
 
   useEffect(() => {
+    setLocalSearch(query);
+  }, [query]);
+
+  useEffect(() => {
     setLoading(true);
     API.get("/products")
       .then(res => setProducts(res.data))
