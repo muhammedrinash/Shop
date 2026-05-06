@@ -1,45 +1,31 @@
 @import "tailwindcss";
 
-/* Define your Premium Theme Variables for v4 */
 @theme {
-  --color-premium-black: #050505;
-  --color-premium-zinc: #0f0f11;
-  --color-premium-violet: #7c3aed;
-  
-  --radius-ios: 2.5rem;
-
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  --animate-marquee: marquee 20s linear infinite;
+  --color-brand: #1a1a1a;
+  --color-accent: #e63946;
+  --color-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-surface: #f9fafb;
 }
 
-/* Custom Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @layer base {
-  body {
-    background-color: #050505;
-    color: white;
-    margin: 0;
-    font-family: 'Inter', -apple-system, sans-serif;
-    -webkit-font-smoothing: antialiased;
+  * {
+    box-sizing: border-box;
   }
-}
-
-/* Premium Violet Glow Utilities */
-@utility violet-glow {
-  box-shadow: 0 0 50px -12px rgba(124, 58, 237, 0.3);
-}
-
-@utility violet-gradient-text {
-  background-clip: text;
-  color: transparent;
-  background-image: linear-gradient(to bottom right, var(--color-violet-400), var(--color-fuchsia-600));
+  body {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 @utility no-scrollbar {

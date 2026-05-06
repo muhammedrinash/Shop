@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import ProtectedRoute from './Components/ProtectedRoute';
@@ -12,7 +12,7 @@ import OrderStatus from './pages/OrderStatus';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AdminDashboard from './pages/AdminDashboard';
-import API from './services/api'; 
+import API from './services/api';
 
 // Wrapper to hide Navbar/Footer on auth pages
 const Layout = ({ cart, addToCart, removeFromCart, clearCart }) => {
@@ -23,19 +23,21 @@ const Layout = ({ cart, addToCart, removeFromCart, clearCart }) => {
   return (
     <>
       {!isAuthPage && !isAdminPage && <Navbar cartCount={cart.length} />}
-      <main className="bg-[#050505] min-h-screen flex flex-col">
+      <main className="bg-white min-h-screen flex flex-col">
         <Routes>
-          {/* Public auth routes */}
+          {/* Auth routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
           {/* Admin route */}
           <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
 
-          {/* Protected routes — require login */}
-          <Route path="/" element={<ProtectedRoute><Home addToCart={addToCart} /></ProtectedRoute>} />
-          <Route path="/store" element={<ProtectedRoute><Store addToCart={addToCart} /></ProtectedRoute>} />
-          <Route path="/product/:id" element={<ProtectedRoute><SingleProduct addToCart={addToCart} /></ProtectedRoute>} />
+          {/* Public routes — no login needed to browse */}
+          <Route path="/" element={<Home addToCart={addToCart} />} />
+          <Route path="/store" element={<Store addToCart={addToCart} />} />
+          <Route path="/product/:id" element={<SingleProduct addToCart={addToCart} />} />
+
+          {/* Protected routes — login required */}
           <Route path="/orders" element={<ProtectedRoute><OrderStatus /></ProtectedRoute>} />
           <Route
             path="/cart"
@@ -86,9 +88,15 @@ function App() {
   };
 
   const addToCart = (product) => {
+    // If not logged in, redirect to login page
+    const token = localStorage.getItem('viluxe_token');
+    if (!token) {
+      window.location.href = '/login';
+      return;
+    }
     const exists = cart.find((item) => item._id === product._id);
     if (exists) {
-      alert("Item already in your bag!");
+      alert("Item already in your cart!");
     } else {
       syncCartWithDB([...cart, { ...product, quantity: 1 }]);
     }
