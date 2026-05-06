@@ -77,8 +77,8 @@ const Navbar = ({ cartCount }) => {
                 </button>
               </form>
 
-              {/* User — only show when logged in */}
-              {user && (
+              {/* User */}
+              {user ? (
                 <div className="hidden md:flex items-center gap-3">
                   <span className="text-sm font-semibold text-gray-700">Hi, {user.name?.split(' ')[0]}</span>
                   <button
@@ -89,6 +89,13 @@ const Navbar = ({ cartCount }) => {
                     <LogOut size={18} />
                   </button>
                 </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="hidden md:inline-flex items-center gap-1.5 bg-[#1a1a1a] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#e63946] transition-colors"
+                >
+                  Login
+                </Link>
               )}
 
               {/* Cart */}
@@ -133,10 +140,12 @@ const Navbar = ({ cartCount }) => {
             {user?.isAdmin && (
               <Link to="/admin" className="text-sm font-bold text-[#e63946] py-1" onClick={() => setMenuOpen(false)}>Admin</Link>
             )}
-            {user && (
+            {user ? (
               <button onClick={handleLogout} className="text-left text-sm font-semibold text-gray-500 hover:text-[#e63946] py-1">
                 Sign Out ({user.name?.split(' ')[0]})
               </button>
+            ) : (
+              <Link to="/login" className="text-sm font-semibold text-white bg-[#1a1a1a] px-4 py-2 rounded-lg text-center hover:bg-[#e63946] transition-colors" onClick={() => setMenuOpen(false)}>Login</Link>
             )}
           </div>
         )}
