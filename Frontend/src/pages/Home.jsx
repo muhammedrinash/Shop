@@ -42,9 +42,9 @@ const Home = ({ addToCart }) => {
   }, []);
 
   const categories = [
-    { name: 'FASHION', count: '124 Products', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600', link: '/store?search=shirt,pant,fashion' },
-    { name: 'ELECTRONICS', count: '86 Products', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?q=80&w=600', link: '/store?search=phone,laptop,electronic,tech' },
-    { name: 'ACCESSORIES', count: '52 Products', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600', link: '/store?search=accessory,watch,ring' },
+    { name: 'FASHION', count: '124 Products', image: '/fashion_category_premium_1778063524221.png', link: '/store?search=shirt,pant,fashion' },
+    { name: 'ELECTRONICS', count: '86 Products', image: '/electronics_category_premium_1778063541713.png', link: '/store?search=phone,laptop,electronic,tech' },
+    { name: 'ACCESSORIES', count: '52 Products', image: '/accessories_category_premium_1778063564332.png', link: '/store?search=accessory,watch,ring' },
   ];
 
   const features = [
@@ -142,14 +142,14 @@ const Home = ({ addToCart }) => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {categories.map((cat, i) => (
-            <Link key={i} to={cat.link} className="group relative rounded-[40px] overflow-hidden aspect-[4/5] bg-slate-100 block">
+            <Link key={i} to={cat.link} className="group relative rounded-[32px] overflow-hidden aspect-[4/3] bg-slate-100 block">
               <img src={cat.image} alt={cat.name}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1000ms] ease-out" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
-              <div className="absolute inset-0 flex flex-col justify-end p-10">
-                <span className="text-blue-400 text-[11px] font-black tracking-[0.3em] mb-2">{cat.count}</span>
-                <h3 className="text-3xl font-black text-white tracking-tighter group-hover:-translate-y-2 transition-transform">{cat.name}</h3>
-                <div className="w-0 h-[3px] bg-white group-hover:w-16 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+              <div className="absolute inset-0 flex flex-col justify-end p-8">
+                <span className="text-blue-400 text-[10px] font-black tracking-[0.3em] mb-2">{cat.count}</span>
+                <h3 className="text-2xl font-black text-white tracking-tighter group-hover:-translate-y-1 transition-transform">{cat.name}</h3>
+                <div className="w-0 h-[2px] bg-white group-hover:w-12 transition-all duration-500 mt-2"></div>
               </div>
             </Link>
           ))}
